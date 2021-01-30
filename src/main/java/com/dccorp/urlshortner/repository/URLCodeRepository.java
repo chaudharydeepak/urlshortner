@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface URLCodeRepository extends CrudRepository<UrlCodeMappingEntity, Long> {
-    
+    boolean existsByCode(String code);
+    UrlCodeMappingEntity findByCode(String code);
 }

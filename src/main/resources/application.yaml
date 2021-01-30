@@ -1,0 +1,26 @@
+spring:
+    jackson.default-property-inclusion: NON_NULL
+    datasource:
+        url: jdbc:h2:file:/Users/deepak.chaudhary/Documents/CrederaProjects/data10
+        driverClassName: org.h2.Driver
+        username: sa
+        password:
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        hibernate:
+            ddl-auto: create
+        properties:
+            hibernate:
+                '[format_sql]': true
+        # show-sql: true
+    h2:
+        console:
+            enabled: true
+
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: DEBUG
+                type:
+                    descriptor.sql.BasicBinder: TRACE

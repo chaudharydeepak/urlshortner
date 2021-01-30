@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,18 +20,19 @@ import lombok.Setter;
 public class UrlCodeMappingEntity {
 
     @Id
-    @GeneratedValue
-    Long id ;
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    String id;
 
-    String url ;
-    String code ;
-    String requested_by; 
+    String url;
+    String code;
 
-    //@Temporal(TemporalType.DATE)
+    @Column(name = "requested_by")
+    String requestedBy;
+
     @Column(name = "created_date", columnDefinition = "TIMESTAMP")
-    LocalDateTime created_date ;
+    LocalDateTime createdDate;
 
-    //@Temporal(TemporalType.DATE)
     @Column(name = "updated_date", columnDefinition = "TIMESTAMP")
-    LocalDateTime updated_date ;
+    LocalDateTime updatedDate;
 }

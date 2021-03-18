@@ -1,6 +1,4 @@
-package com.dccorp.urlshortner.controllers;
-
-import java.net.URI;
+package com.dccorp.urlshortner.controller;
 
 import com.dccorp.urlshortner.entity.UrlCodeMappingEntity;
 import com.dccorp.urlshortner.repository.URLCodeRepository;
@@ -12,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
+
+import java.net.URI;
 
 @Slf4j(topic = "RouteRedirectController")
 @RestController
@@ -33,3 +33,4 @@ public class RouteRedirectController {
         return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(codeMappingEntity.getUrl())).build();
     }
 }
+

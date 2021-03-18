@@ -1,4 +1,4 @@
-package com.dccorp.urlshortner.domin;
+package com.dccorp.urlshortner.domain;
 
 import lombok.Data;
 

@@ -1,7 +1,8 @@
 spring:
     jackson.default-property-inclusion: NON_NULL
     datasource:
-        url: jdbc:h2:file:/Users/deepak.chaudhary/Documents/CrederaProjects/data10
+        #url: jdbc:h2:file:/Users/deepak.chaudhary/Documents/CrederaProjects/data10
+        url: jdbc:h2:mem:testdb
         driverClassName: org.h2.Driver
         username: sa
         password:
@@ -19,8 +20,16 @@ spring:
 
 logging:
     level:
+        root: INFO
         org:
             hibernate:
                 SQL: DEBUG
                 type:
                     descriptor.sql.BasicBinder: TRACE
+            #springframework: TRACE
+
+okta:
+    oauth2:
+        issuer: https://dev-6047086.okta.com/oauth2/default
+        client-id: 0oa4rlic8Cy3zIZed5d6
+        client-secret: WZWnZR8bvjfEaYJhkSUERhUx4z9cq6XX4mEQive3

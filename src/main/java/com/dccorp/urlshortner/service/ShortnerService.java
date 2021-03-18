@@ -1,19 +1,21 @@
 package com.dccorp.urlshortner.service;
 
-import java.time.LocalDateTime;
-
-import com.dccorp.urlshortner.domin.ServiceRequest;
-import com.dccorp.urlshortner.domin.ServiceResponse;
+import com.dccorp.urlshortner.domain.ServiceRequest;
+import com.dccorp.urlshortner.domain.ServiceResponse;
 import com.dccorp.urlshortner.entity.CodeActiveEntity;
 import com.dccorp.urlshortner.entity.UrlCodeMappingEntity;
 import com.dccorp.urlshortner.repository.CodeActiveRepository;
 import com.dccorp.urlshortner.repository.URLCodeRepository;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import lombok.extern.slf4j.Slf4j;
+
+import java.time.LocalDateTime;
+
+@Slf4j(topic = "ShortnerService")
 @Service
-@Transactional
+//@Transactional
 public class ShortnerService {
 
     URLCodeRepository codeRepository;
@@ -44,11 +46,12 @@ public class ShortnerService {
         serviceResponse.setShortURL(serviceRequest.getRequestedShortCode());
         serviceResponse.setStartDate(codeActiveEntityResponse.getCreatedDate());
         serviceResponse.setEndDate(codeActiveEntityResponse.getEnddate());
+        log.info(" ---> {}", serviceResponse);
         return serviceResponse;
     }
 
-	public UrlCodeMappingEntity getShortCode(String destination) {
+    public UrlCodeMappingEntity getShortCode(String destination) {
         return codeRepository.findByCode(destination);
-	}
+    }
 
 }

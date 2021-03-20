@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.4.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.dccorp</groupId>
     <artifactId>urlshortner</artifactId>
@@ -15,7 +15,6 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
-        <kotlin.version>1.4.21</kotlin.version>
     </properties>
     <profiles>
         <profile>
@@ -29,6 +28,10 @@
                         <configuration>
                             <!-- The native image build needs to know the entry point to your application -->
                             <mainClass>com.dccorp.urlshortner.UrlShortnerApplication</mainClass>
+                            <buildArgs>
+                                -H:DashboardDump=dumpfileoversizedbuildArgs
+                                -H:+DashboardAll
+                            </buildArgs>
                         </configuration>
                         <executions>
                             <execution>
@@ -69,25 +72,25 @@
                 </exclusion>
             </exclusions>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-web</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-function-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                    <artifactId>tomcat-embed-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                    <artifactId>tomcat-embed-websocket</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--		<dependency>-->
-        <!--			<groupId>org.springframework.boot</groupId>-->
-        <!--			<artifactId>spring-boot-devtools</artifactId>-->
-        <!--			<scope>runtime</scope>-->
-        <!--			<optional>true</optional>-->
-        <!--		</dependency>-->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -108,7 +111,11 @@
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.tomcat.experimental</groupId>
+            <artifactId>tomcat-embed-programmatic</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
@@ -127,21 +134,8 @@
         </dependency>
     </dependencies>
 
-
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -185,23 +179,19 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
                     <image>
                         <builder>paketobuildpacks/builder:tiny</builder>
                         <env>
                             <BP_BOOT_NATIVE_IMAGE>true</BP_BOOT_NATIVE_IMAGE>
-                            <!--							<BP_BOOT_NATIVE_IMAGE_BUILD_ARGUMENTS>-->
-                            <!--								&lt;!&ndash; -Dspring.native.remove-xml-support=true &ndash;&gt;-->
-                            <!--								-Dspring.spel.ignore=true-->
-                            <!--							</BP_BOOT_NATIVE_IMAGE_BUILD_ARGUMENTS>-->
-                            <BP_BOOT_NATIVE_IMAGE_BUILD_ARGUMENTS>
-                                -H:DashboardDump=dumpfileoversized
-                                -H:+DashboardAll
-                                <!--&lt;!&ndash;								-H:+ReportExceptionStackTraces&ndash;&gt;-->
-                                <!--&lt;!&ndash;								&#45;&#45;trace-class-initialization=org.springframework.util.unit.DataSize&ndash;&gt;-->
-                                <!--&lt;!&ndash;								&#45;&#45;initialize-at-build-time=org.springframework.util.unit.DataSize&ndash;&gt;-->
-                            </BP_BOOT_NATIVE_IMAGE_BUILD_ARGUMENTS>
                         </env>
                     </image>
+                    <classifier>exec</classifier>
                 </configuration>
             </plugin>
             <plugin>
@@ -222,13 +212,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <classifier>exec</classifier>
-                </configuration>
             </plugin>
         </plugins>
     </build>

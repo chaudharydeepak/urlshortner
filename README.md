@@ -16,10 +16,12 @@
 
 1. Download [native package](https://github.com/chaudharydeepak/urlshortner/releases).
 ```sh
+# requires graalvm locally installed.
 $ ./com.dccorp.urlshortner.urlshortnerapplication 
 ```   
 2. Or execute following:
 ```sh
+# docker on local.
 $ docker run -p 8080:8080 docker.pkg.github.com/chaudharydeepak/urlshortner/urlshortner:0.1
 ```
 

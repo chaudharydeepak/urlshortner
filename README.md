@@ -19,7 +19,8 @@ $ mvn -Pnative-image package
 # execute generated native image
 $ ./com.dccorp.urlshortner.urlshortnerapplication
 
-# using buildpacks with docker - ref pom.xml line 193-212
+# using buildpacks - ref pom.xml line 193-212
+# requires docker local installation.
 $ mvn spring-boot:build-image
 # execute docker image 
 $ docker run -p 8080:8080 urlshortner:0.0.1-SNAPSHOT

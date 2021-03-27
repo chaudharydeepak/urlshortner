@@ -6,6 +6,7 @@ import com.dccorp.urlshortner.entity.CodeActiveEntity;
 import com.dccorp.urlshortner.entity.UrlCodeMappingEntity;
 import com.dccorp.urlshortner.repository.CodeActiveRepository;
 import com.dccorp.urlshortner.repository.URLCodeRepository;
+import com.dccorp.urlshortner.util.AppUtility;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -28,18 +29,17 @@ public class ShortnerService {
         this.codeRepository = codeRepository;
         this.codeActiveRepository = codeActiveRepository;
     }
-
-
-
+    
     public ServiceResponse createShortCode(ServiceRequest serviceRequest) {
         UrlCodeMappingEntity urlCodeMapping = new UrlCodeMappingEntity();
         urlCodeMapping.setCode(serviceRequest.getRequestedShortCode());
         urlCodeMapping.setUrl(serviceRequest.getRequestURL());
         urlCodeMapping.setCreatedDate((LocalDateTime.now()));
         urlCodeMapping.setUpdatedDate((LocalDateTime.now()));
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentPrincipalName = authentication.getName();
-        urlCodeMapping.setRequestedBy(currentPrincipalName);
+
+        AppUtility ctx = () -> SecurityContextHolder.getContext().getAuthentication().getName();
+
+        urlCodeMapping.setRequestedBy(ctx.fetchUserFrmCtx());
         UrlCodeMappingEntity codeMappingEntityResponse = codeRepository.save(urlCodeMapping);
 
         CodeActiveEntity codeActiveEntity = new CodeActiveEntity();

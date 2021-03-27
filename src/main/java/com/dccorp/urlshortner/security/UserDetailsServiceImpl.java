@@ -18,7 +18,7 @@ import java.util.Collections;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private RegistrationRepository userRepository;
+    private final RegistrationRepository userRepository;
 
     public UserDetailsServiceImpl(RegistrationRepository userRepository) {
         this.userRepository = userRepository;

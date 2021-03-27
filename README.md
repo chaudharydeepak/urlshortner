@@ -48,19 +48,19 @@ curl -k --location --request POST 'https://localhost:8080/create' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGF1ZGhhcnlkZWVwYWswOEBnbWFpbC5jb20iLCJleHAiOjE2MTc2NDQzNzl9.eSfylYVUIgnOFbUULXG9yjUJuApPvgSKJCti_Jdv-XK-umVPPv7eYRgSm62K60vY89Sp_nRIWx6UOjEuNe5v6Q' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "requestURL":"https://stackoverflow.com/questions/17955777/redirect-to-an-external-url-from-controller-action-in-spring-mvc",
-    "requestedShortCode":"stack"
+    "requestURL":"https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/",
+    "requestedShortCode":"nativedocs"
 }'
 #should see response like
 {"statusCodeValue":201,"statusCode":"CREATED","body":{"shortURL":"stack",......
 
 # try to see if short url works
-$ curl -k -i https://localhost:8080/go/stack
+$ curl -k -i https://localhost:8080/go/nativedocs
 HTTP/1.1 302 
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Location: https://stackoverflow.com/questions/17955777/redirect-to-an-external-url-from-controller-action-in-spring-mvc
+Location: https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -69,7 +69,7 @@ Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: SAMEORIGIN
 Content-Length: 0
-Date: Sat, 27 Mar 2021 05:45:18 GMT
+Date: Sat, 27 Mar 2021 05:54:59 GMT
 
 ```
 

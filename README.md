@@ -60,7 +60,7 @@ curl -k --location --request POST 'https://localhost:8080/create' \
 - Startup time is almost instantaneous - but build time is significantly higher - which possibly will improve over time as the project matures.
 - Not all Spring modules /projects are supported yet - for ex. developer tools / AOP support missing [03/25] - things in motion already.
 - Need significant RAM on the machine to play with Native support in the first place.
-- No Out-of-the-box support to generate native images for pre-existing Spring Boot application - tweeks will be required - though in long run that is the goal.
+- No Out-of-the-box native image generation for pre-existing Spring Boot application - tweeks / testing will be required - though in long run that is the goal.
 - Size of native image could be futher reduced by using tools like upx.
   ```sh
   $ ls -lh | grep url

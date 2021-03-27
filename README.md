@@ -105,7 +105,7 @@ Date: Sat, 27 Mar 2021 05:54:59 GMT
   ```
   Only available when using native image plugin and not buildpacks to generate native image.
   [GraalVM Dashboard](https://www.graalvm.org/docs/tools/dashboard/?ojr=dashboard)
-- Need to careful around anything that's reflection. AOT[<i>Ahead-Of-Time</i>] compilation is actually analysing the entire application during build time[<i>hence increased build time</>] - so it might miss some classes whose instantiation is decided at actual runtime instead[<i>lazy</i>], though there is <i>hint</> support available to take care of these situations.
+- Need to careful around anything that's reflection. AOT[<i>Ahead-Of-Time</i>] compilation is actually analysing the entire application during build time[<i>hence increased build time</i>] - so it might miss some classes whose instantiation is decided at actual runtime instead[<i>lazy</i>], though there is <i>hint</i> support available to take care of these situations.
 - Very good support from Community / good documentation Spring Native and GraalVM.
 
 #

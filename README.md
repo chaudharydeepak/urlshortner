@@ -1,7 +1,9 @@
 ### Demo Application to explore Spring Native
 
+###### Sample application to expose Spring Native Capabilities. Abbreviated version of something like bitly. Not for production use, yet! All persistance to inmemory H2 db.
+
 #### Features [Spring Modules included]
-- Spring Boot.
+- Spring Boot 2.4.x.
 - Spring Data JPA [Starter].
 - Spring Security [Starter] with JWT.
 - Spring Cloud Function [Starter].

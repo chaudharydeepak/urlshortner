@@ -50,4 +50,29 @@ curl -k --location --request POST 'https://localhost:8080/create' \
 {"statusCodeValue":201,"statusCode":"CREATED","body":{"shortURL":"stack",......
 ```
 
+#
+###### Key Learnings
+- Startup time ~ 0.55seconds vs ~4.5seconds subjective to machine.
+- The Generated image is around 182M [using buildpacks] and ~148M [native image plugin] vs 30M executable jar [ofcourse JVM is exposed outside of the jar on running machine].
+- Startup time is almost instantaneous - but build time is significantly higher - which possibly will improve over time as the project matures.
+- Not all Spring modules /projects are supported yet - for ex. developer tools / AOP support missing [03/25] - things in motion already.
+- Need significant RAM on the machine to play with Native support in the first place.
+- No Out-of-the-box support to generate native images for pre-existing Spring Boot application - tweeks will be required - though in long run that is the goal.
+- Size of native image could be futher reduced by using tools like upx.
+  ```sh
+  $ ls -lh | grep url
+  -rwxr-xr-x   1 deepak.chaudhary  staff   148M Mar 27 00:00 com.dccorp.urlshortner.urlshortnerapplication
+  -rw-r--r--   1 deepak.chaudhary  staff    38M Mar 26 23:47 urlshortner-0.0.1-SNAPSHOT-exec.jar
+  -rw-r--r--   1 deepak.chaudhary  staff    76K Mar 26 23:47 urlshortner-0.0.1-SNAPSHOT.jar
+  
+  $ upx -7 -k com.dccorp.urlshortner.urlshortnerapplication
+  
+  $ ls -lh | grep url # size reduced to 43M from 148M which is amazing.
+  -rwxr-xr-x   1 deepak.chaudhary  staff    43M Mar 27 00:00 com.dccorp.urlshortner.urlshortnerapplication
+  -rwxr-xr-x   1 deepak.chaudhary  staff   148M Mar 27 00:00 com.dccorp.urlshortner.urlshortnerapplicatio~
+  -rw-r--r--   1 deepak.chaudhary  staff    38M Mar 26 23:47 urlshortner-0.0.1-SNAPSHOT-exec.jar
+  -rw-r--r--   1 deepak.chaudhary  staff    76K Mar 26 23:47 urlshortner-0.0.1-SNAPSHOT.jar
+  ```
+- Very good support from Community.
+
 ###### More details to follow.

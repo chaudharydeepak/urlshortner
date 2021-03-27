@@ -206,8 +206,8 @@
                             <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
                         </env>
                     </image>
-                    <!-- use only for native image creation on running OS.-->
-                    <!--                    <classifier>exec</classifier>-->
+                    <!-- uncomment only for native image creation on running OS.-->
+                                        <classifier>exec</classifier>
                 </configuration>
             </plugin>
             <plugin>

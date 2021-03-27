@@ -12,7 +12,7 @@
 
 ###### [Summary 03/25](https://github.com/chaudharydeepak/urlshortner#key-learnings)
 
-###### Quick Start
+###### Quick Start:
 
 1. Download [native package](https://github.com/chaudharydeepak/urlshortner/releases)
 2. Or execute following:

@@ -9,7 +9,7 @@
 - Spring Cloud Function [Starter].
 - Tomcat with SSL.
 
-#### [Summary 03/25](https://github.com/chaudharydeepak/urlshortner#key-learnings)
+##### [Summary 03/25](https://github.com/chaudharydeepak/urlshortner#key-learnings)
 
 #### Instructions:
 ```sh

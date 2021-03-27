@@ -76,7 +76,7 @@ Date: Sat, 27 Mar 2021 05:54:59 GMT
 
 #
 ###### Key Learnings
-- Native image startup time is ~0.55s vs ~4.5s [<i>non-native</i>] subjective to machine, which is pretty cool.
+- Native image startup time is ~0.55s vs ~4.5s [<i>executable jar</i>] subjective to machine, which is pretty cool.
 - The Generated native image is around ~182M [<i>using buildpacks</i>] vs ~148M [<i>native image plugin</i>] vs ~40M executable jar. [<i>ofcourse since JVM is available outside of the jar on running machine</i>].
 - Startup time is almost instantaneous - but build time is significantly higher - which possibly will improve over time as the project matures.
 - Not all Spring modules /projects are supported yet - for ex. developer tools / AOP support missing [03/25] - things in motion already.

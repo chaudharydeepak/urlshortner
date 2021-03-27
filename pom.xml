@@ -207,7 +207,7 @@
                         </env>
                     </image>
                     <!-- uncomment only for native image creation on running OS.-->
-                                        <classifier>exec</classifier>
+                    <classifier>exec</classifier>
                 </configuration>
             </plugin>
             <plugin>

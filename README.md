@@ -10,10 +10,20 @@
 - Tomcat with SSL.
 - Exposing only REST endpoints.
 
-##### [Summary 03/25](https://github.com/chaudharydeepak/urlshortner#key-learnings)
+###### [Summary 03/25](https://github.com/chaudharydeepak/urlshortner#key-learnings)
 
-#### Instructions:
+###### Quick Start
+
+1. Download [native package](https://github.com/chaudharydeepak/urlshortner/releases)
+2. Or execute following:
 ```sh
+$ docker run -p 8080:8080 docker.pkg.github.com/chaudharydeepak/urlshortner/urlshortner:0.1
+```
+
+###### Detailed Instructions:
+```sh
+# checkout source code to local.
+
 # native image plugin - ref pom.xml line 22-49, line 209-210
 # requires GraalVM locally installed.
 $ mvn -Pnative-image package
@@ -105,7 +115,7 @@ Date: Sat, 27 Mar 2021 05:54:59 GMT
   ```
   Only available when using native image plugin and not buildpacks to generate native image.
   [GraalVM Dashboard](https://www.graalvm.org/docs/tools/dashboard/?ojr=dashboard)
-- Need to careful around anything that's reflection. AOT[<i>Ahead-Of-Time</i>] compilation is actually analysing the entire application during build time[<i>hence increased build time</i>] - so it might miss some classes whose instantiation is decided at actual runtime instead[<i>lazy</i>], though there is <i>hint</i> support available to take care of these situations.
+- Need to watchful around anything that's reflection. AOT[<i>Ahead-Of-Time</i>] compilation is actually analysing the entire application during build time[<i>hence increased build time</i>] - so it might miss some classes whose instantiation is decided at actual runtime instead[<i>lazy</i>], though there is <i>hint</i> support available to take care of these situations.
 - Very good support from Community / good documentation Spring Native and GraalVM.
 
 #

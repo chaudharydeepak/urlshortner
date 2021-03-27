@@ -15,10 +15,10 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 public class RegistrationController {
 
-    private RegistrationRepository registrationRepository;
+    private final RegistrationRepository registrationRepository;
 
    // @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public RegistrationController(RegistrationRepository registrationRepository) {
         this.registrationRepository = registrationRepository;

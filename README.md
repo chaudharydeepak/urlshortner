@@ -8,6 +8,7 @@
 - Spring Security [Starter] with JWT.
 - Spring Cloud Function [Starter].
 - Tomcat with SSL.
+- Exposing only REST endpoints.
 
 ##### [Summary 03/25](https://github.com/chaudharydeepak/urlshortner#key-learnings)
 

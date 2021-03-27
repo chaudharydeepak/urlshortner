@@ -54,7 +54,7 @@ curl -k --location --request POST 'https://localhost:8080/create' \
 #
 ###### Key Learnings
 - Startup time ~ 0.55seconds vs ~4.5seconds subjective to machine.
-- The Generated image is around 182M [using buildpacks] vs ~148M [native image plugin] vs 30M executable jar [ofcourse JVM is exposed outside of the jar on running machine].
+- The Generated image is around ~182M [using buildpacks] vs ~148M [native image plugin] vs ~40M executable jar [ofcourse JVM is exposed outside of the jar on running machine].
 - Startup time is almost instantaneous - but build time is significantly higher - which possibly will improve over time as the project matures.
 - Not all Spring modules /projects are supported yet - for ex. developer tools / AOP support missing [03/25] - things in motion already.
 - Need significant RAM on the machine to play with Native support in the first place.
@@ -85,7 +85,7 @@ curl -k --location --request POST 'https://localhost:8080/create' \
 - Very good support from Community / good documentation Spring Native and GraalVM.
 
 #
-######Links
+###### Links
 - [GraalVM](https://www.graalvm.org/)
 - [Spring Native](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/)
 - [Spring Native Samples](https://github.com/spring-projects-experimental/spring-native/tree/master/samples)

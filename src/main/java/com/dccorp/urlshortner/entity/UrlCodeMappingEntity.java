@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Table(name = "url_code_mapping")
-public class UrlCodeMappingEntity {
+public class UrlCodeMappingEntity implements Serializable {
 
     @Id
     @GeneratedValue(generator = "system-uuid")

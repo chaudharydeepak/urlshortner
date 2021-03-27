@@ -8,11 +8,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.nativex.hint.TypeHint;
 import org.springframework.nativex.hint.TypeHints;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @SpringBootApplication
 @TypeHints({
         @TypeHint(types = HttpStatus.class),
         @TypeHint(types = ServiceResponse.class)
-})
+}
+)
+
 public class UrlShortnerApplication {
 
     public static void main(String[] args) {

@@ -3,6 +3,7 @@ package com.dccorp.urlshortner.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Table(name = "code_active")
-public class CodeActiveEntity {
+public class CodeActiveEntity implements Serializable {
 
     String Id;
     @Column(name = "start_date", columnDefinition = "TIMESTAMP")

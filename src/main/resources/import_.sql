@@ -2,4 +2,6 @@ CREATE TABLE IF NOT EXISTS url_code_mapping ( id VARCHAR(36) PRIMARY KEY, code V
 
 CREATE TABLE IF NOT EXISTS code_active ( id varchar(36), FOREIGN KEY (id) REFERENCES url_code_mapping, start_date timestamp, end_date timestamp);
 
+CREATE TABLE IF NOT EXISTS user ( id number, first_name VARCHAR(25), last_name VARCHAR(25), email VARCHAR(50), password VARCHAR(250));
+
 /*CREATE SEQUENCE HIBERNATE_SEQUENCE START WITH 1 INCREMENT BY 1;*/

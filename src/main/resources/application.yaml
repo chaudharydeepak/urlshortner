@@ -13,7 +13,7 @@ spring:
         properties:
             hibernate:
                 '[format_sql]': true
-        # show-sql: true
+        show-sql: true
     h2:
         console:
             enabled: true
@@ -26,10 +26,5 @@ logging:
                 SQL: DEBUG
                 type:
                     descriptor.sql.BasicBinder: TRACE
-            #springframework: TRACE
-
-okta:
-    oauth2:
-        issuer: https://dev-6047086.okta.com/oauth2/default
-        client-id: 0oa4rlic8Cy3zIZed5d6
-        client-secret: WZWnZR8bvjfEaYJhkSUERhUx4z9cq6XX4mEQive3
+            # aspectj: TRACE
+            # springframework: TRACE

@@ -28,12 +28,6 @@ public class ShortnerController {
         this.shortnerService = shortnerService;
     }
 
-//    @PostMapping(value="/url",produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<ServiceResponse> createShortURL(@RequestBody ServiceRequest urlRequest) {
-//        log.info("executing contoller: {}", urlRequest);
-//        return new ResponseEntity<>(shortnerService.createShortCode(urlRequest), HttpStatus.CREATED);
-//    }
-
     @Bean
     public Function<ServiceRequest, ResponseEntity<ServiceResponse>> create() {
         return (serviceRequest) -> new ResponseEntity<>(shortnerService.createShortCode(serviceRequest), HttpStatus.CREATED);

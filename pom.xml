@@ -29,8 +29,11 @@
                             <!-- The native image build needs to know the entry point to your application -->
                             <mainClass>com.dccorp.urlshortner.UrlShortnerApplication</mainClass>
                             <buildArgs>
-                                -H:DashboardDump=dumpfileoversizedbuildArgs
-                                -H:+DashboardAll
+                                <!--                                -H:DashboardDump=dumpfileoversizedbuildArgs-->
+                                <!--                                -H:+DashboardAll-->
+                                <!--                                -H:ReflectionConfigurationFiles=classes/reflect-config.json-->
+                                <!--                                -H:DynamicProxyConfigurationFiles=classes/proxy-config.json-->
+                                --enable-https
                             </buildArgs>
                         </configuration>
                         <executions>
@@ -75,16 +78,17 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-function-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.tomcat.embed</groupId>
-                    <artifactId>tomcat-embed-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.tomcat.embed</groupId>
-                    <artifactId>tomcat-embed-websocket</artifactId>
-                </exclusion>
-            </exclusions>
+            <!-- exclude below if using lightweight tomcat for native images. -->
+            <!--            <exclusions>-->
+            <!--                <exclusion>-->
+            <!--                    <groupId>org.apache.tomcat.embed</groupId>-->
+            <!--                    <artifactId>tomcat-embed-core</artifactId>-->
+            <!--                </exclusion>-->
+            <!--                <exclusion>-->
+            <!--                    <groupId>org.apache.tomcat.embed</groupId>-->
+            <!--                    <artifactId>tomcat-embed-websocket</artifactId>-->
+            <!--                </exclusion>-->
+            <!--            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -111,11 +115,12 @@
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat.experimental</groupId>
-            <artifactId>tomcat-embed-programmatic</artifactId>
-            <version>${tomcat.version}</version>
-        </dependency>
+        <!-- lightweith embedded tomcat creates problem with SSL.-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.tomcat.experimental</groupId>-->
+        <!--            <artifactId>tomcat-embed-programmatic</artifactId>-->
+        <!--            <version>${tomcat.version}</version>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
@@ -130,8 +135,18 @@
         <dependency>
             <groupId>org.springframework.experimental</groupId>
             <artifactId>spring-native</artifactId>
-            <version>0.9.0</version>
+            <version>0.9.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -188,10 +203,11 @@
                     <image>
                         <builder>paketobuildpacks/builder:tiny</builder>
                         <env>
-                            <BP_BOOT_NATIVE_IMAGE>true</BP_BOOT_NATIVE_IMAGE>
+                            <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
                         </env>
                     </image>
-                    <classifier>exec</classifier>
+                    <!-- use only for native image creation on running OS.-->
+                    <!--                    <classifier>exec</classifier>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -237,7 +253,6 @@
             </releases>
         </repository>
     </repositories>
-
     <pluginRepositories>
         <pluginRepository>
             <id>spring-release</id>
@@ -245,5 +260,4 @@
             <url>https://repo.spring.io/release</url>
         </pluginRepository>
     </pluginRepositories>
-
 </project>

@@ -1,4 +1,4 @@
-### Demo Application to explore Spring Native
+### Demo Application to explore Spring Native.
 
 ###### Sample application to expose Spring Native Capabilities. Abbreviated version of something like bitly. Not for production use, yet! All persistance to inmemory H2 db.
 
@@ -9,7 +9,9 @@
 - Spring Cloud Function [Starter].
 - Tomcat with SSL.
 
-#### Instructions
+#### [Key Learnings](https://github.com/chaudharydeepak/urlshortner#key-learnings)
+
+#### Instructions:
 ```sh
 # native image plugin - ref pom.xml line 22-49, line 209-210
 # requires GraalVM locally installed.

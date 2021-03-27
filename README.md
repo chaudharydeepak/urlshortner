@@ -74,13 +74,13 @@ curl -k --location --request POST 'https://localhost:8080/create' \
   -rw-r--r--   1 deepak.chaudhary  staff    38M Mar 26 23:47 urlshortner-0.0.1-SNAPSHOT-exec.jar
   -rw-r--r--   1 deepak.chaudhary  staff    76K Mar 26 23:47 urlshortner-0.0.1-SNAPSHOT.jar
   ```
-- Further image size could be reduced by using embedded tomcat specific to native image generations - ref pom.xml line 118.
+- Further image size could be reduced by using trimmed down tomcat [experimental] - ref pom.xml line 118.
 - Oracle provides GraalVM Dashboard online tool to peek inside native image.
   ```sh
   -H:DashboardDump=dumpfileoversizedbuildArgs
   -H:+DashboardAll
   ```
-  Only available when using native image plugin and not buildpacks to generate image.
+  Only available when using native image plugin and not buildpacks to generate native image.
   [GraalVM Dashboard](https://www.graalvm.org/docs/tools/dashboard/?ojr=dashboard)
 - Very good support from Community / good documentation Spring Native and GraalVM.
 

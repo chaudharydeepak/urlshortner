@@ -24,7 +24,7 @@ $ mvn spring-boot:build-image
 # execute docker image 
 $ docker run -p 8080:8080 urlshortner:0.0.1-SNAPSHOT
 
-# after application starts [using either buildpacks or native image plugin]
+# after application starts [built either with buildpacks or native image plugin]
 # register a new user
 curl -k --location --request POST 'https://localhost:8080/signup' --header 'Content-Type: application/json' --data-raw '{
     "firstName":"FName",

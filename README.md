@@ -2,11 +2,11 @@
 
 ###### Sample application to expose Spring Native Capabilities. Abbreviated version of something like bitly. Not for production use, yet! All persistance to inmemory H2 db.
 
-#### Features [Spring Modules included]
+#### Features / Spring Modules included
 - Spring Boot 2.4.x.
-- Spring Data JPA [Starter].
-- Spring Security [Starter] with JWT.
-- Spring Cloud Function [Starter].
+- Spring Data JPA [<i>Starter</i>].
+- Spring Security [<i>Starter</i>] with JWT.
+- Spring Cloud Function [<i>Starter</i>].
 - Tomcat with SSL.
 - Exposing only REST endpoints.
 
@@ -76,8 +76,8 @@ Date: Sat, 27 Mar 2021 05:54:59 GMT
 
 #
 ###### Key Learnings
-- Startup time ~0.55seconds vs ~4.5seconds[non-native] subjective to machine, which is pretty cool.
-- The Generated native image is around ~182M [using buildpacks] vs ~148M [native image plugin] vs ~40M executable jar [ofcourse JVM is exposed outside of the jar on running machine].
+- Startup time ~0.55seconds vs ~4.5seconds[<i>non-native</i>] subjective to machine, which is pretty cool.
+- The Generated native image is around ~182M [<i>using buildpacks</i>] vs ~148M [<i>native image plugin</i>] vs ~40M executable jar [<i>ofcourse since JVM is available outside of the jar on running machine</i>].
 - Startup time is almost instantaneous - but build time is significantly higher - which possibly will improve over time as the project matures.
 - Not all Spring modules /projects are supported yet - for ex. developer tools / AOP support missing [03/25] - things in motion already.
 - Need significant RAM on the machine to play with Native support in the first place.
@@ -97,7 +97,7 @@ Date: Sat, 27 Mar 2021 05:54:59 GMT
   -rw-r--r--   1 deepak.chaudhary  staff    38M Mar 26 23:47 urlshortner-0.0.1-SNAPSHOT-exec.jar
   -rw-r--r--   1 deepak.chaudhary  staff    76K Mar 26 23:47 urlshortner-0.0.1-SNAPSHOT.jar
   ```
-- Further image size could be reduced by using trimmed down tomcat [experimental] - ref pom.xml line 118.
+- Further image size could be reduced by using trimmed down tomcat [<i>experimental</i>] - ref pom.xml line 118.
 - Oracle provides GraalVM Dashboard online tool to peek inside native image.
   ```sh
   -H:DashboardDump=dumpfileoversizedbuildArgs

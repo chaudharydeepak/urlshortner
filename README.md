@@ -14,7 +14,10 @@
 
 ###### Quick Start:
 
-1. Download [native package](https://github.com/chaudharydeepak/urlshortner/releases)
+1. Download [native package](https://github.com/chaudharydeepak/urlshortner/releases).
+```sh
+$ ./com.dccorp.urlshortner.urlshortnerapplication 
+```   
 2. Or execute following:
 ```sh
 $ docker run -p 8080:8080 docker.pkg.github.com/chaudharydeepak/urlshortner/urlshortner:0.1

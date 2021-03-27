@@ -12,6 +12,7 @@
 #### Instructions
 ```sh
 # native image plugin - ref pom.xml line 22-49, line 209-210
+# requires GraalVM locally installed.
 $ mvn -Pnative-image package
 # execute generated native image
 $ ./com.dccorp.urlshortner.urlshortnerapplication
@@ -21,7 +22,7 @@ $ mvn spring-boot:build-image
 # execute docker image 
 $ docker run -p 8080:8080 urlshortner:0.0.1-SNAPSHOT
 
-# after application starts using either option above [ buildpacks or native image plugin ]
+# after application starts [using either buildpacks or native image plugin]
 # register a new user
 curl -k --location --request POST 'https://localhost:8080/signup' --header 'Content-Type: application/json' --data-raw '{
     "firstName":"FName",
@@ -53,7 +54,7 @@ curl -k --location --request POST 'https://localhost:8080/create' \
 #
 ###### Key Learnings
 - Startup time ~ 0.55seconds vs ~4.5seconds subjective to machine.
-- The Generated image is around 182M [using buildpacks] and ~148M [native image plugin] vs 30M executable jar [ofcourse JVM is exposed outside of the jar on running machine].
+- The Generated image is around 182M [using buildpacks] vs ~148M [native image plugin] vs 30M executable jar [ofcourse JVM is exposed outside of the jar on running machine].
 - Startup time is almost instantaneous - but build time is significantly higher - which possibly will improve over time as the project matures.
 - Not all Spring modules /projects are supported yet - for ex. developer tools / AOP support missing [03/25] - things in motion already.
 - Need significant RAM on the machine to play with Native support in the first place.
@@ -73,6 +74,19 @@ curl -k --location --request POST 'https://localhost:8080/create' \
   -rw-r--r--   1 deepak.chaudhary  staff    38M Mar 26 23:47 urlshortner-0.0.1-SNAPSHOT-exec.jar
   -rw-r--r--   1 deepak.chaudhary  staff    76K Mar 26 23:47 urlshortner-0.0.1-SNAPSHOT.jar
   ```
-- Very good support from Community.
+- Further image size could be reduced by using embedded tomcat specific to native image generations - ref pom.xml line 118.
+- Oracle provides GraalVM Dashboard online tool to peek inside native image.
+  ```sh
+  -H:DashboardDump=dumpfileoversizedbuildArgs
+  -H:+DashboardAll
+  ```
+  Only available when using native image plugin and not buildpacks to generate image.
+  [GraalVM Dashboard](https://www.graalvm.org/docs/tools/dashboard/?ojr=dashboard)
+- Very good support from Community / good documentation Spring Native and GraalVM.
 
+#
+######Links
+- [GraalVM](https://www.graalvm.org/)
+- [Spring Native](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/)
+- [Spring Native Samples](https://github.com/spring-projects-experimental/spring-native/tree/master/samples)
 ###### More details to follow.

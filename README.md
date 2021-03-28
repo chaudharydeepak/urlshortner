@@ -128,6 +128,7 @@ Date: Sat, 27 Mar 2021 05:54:59 GMT
   ![Dive](divedocker.png)
 - Need to watchful around anything that's reflection. AOT[<i>Ahead-Of-Time</i>] compilation is actually analysing the entire application during build time[<i>hence increased build time</i>] - so it might miss some classes whose instantiation is decided at actual runtime instead[<i>lazy</i>], though there is <i>hint</i> support available to take care of these situations.
 - Very good support from Community / good documentation Spring Native and GraalVM.
+- Follow open issue with possible [Development Process #651](https://github.com/spring-projects-experimental/spring-native/issues/651).
 
 #
 ###### Links

@@ -29,8 +29,8 @@
                             <!-- The native image build needs to know the entry point to your application -->
                             <mainClass>com.dccorp.urlshortner.UrlShortnerApplication</mainClass>
                             <buildArgs>
-                                <!--                                -H:DashboardDump=dumpfileoversizedbuildArgs-->
-                                <!--                                -H:+DashboardAll-->
+                                -H:DashboardDump=dumpfileoversizedbuildArgs
+                                -H:+DashboardAll
                                 <!--                                -H:ReflectionConfigurationFiles=classes/reflect-config.json-->
                                 <!--                                -H:DynamicProxyConfigurationFiles=classes/proxy-config.json-->
                                 --enable-https
@@ -211,7 +211,7 @@
                         </env>
                     </image>
                     <!-- uncomment only for native image creation on running OS.-->
-                    <!-- <classifier>exec</classifier> -->
+                    <classifier>exec</classifier>
                 </configuration>
             </plugin>
             <plugin>

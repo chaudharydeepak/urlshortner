@@ -1,6 +1,9 @@
 spring:
+    application:
+        name: urlshortner
     jackson.default-property-inclusion: NON_NULL
     datasource:
+        # you can try persist data to a file with H2 db.
         #url: jdbc:h2:file:/Users/deepak.chaudhary/Documents/CrederaProjects/data10
         url: jdbc:h2:mem:testdb
         driverClassName: org.h2.Driver

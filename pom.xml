@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.dccorp</groupId>
     <artifactId>urlshortner</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>urlshortner</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -61,6 +61,10 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -207,7 +211,7 @@
                         </env>
                     </image>
                     <!-- uncomment only for native image creation on running OS.-->
-                    <classifier>exec</classifier>
+                    <!-- <classifier>exec</classifier> -->
                 </configuration>
             </plugin>
             <plugin>

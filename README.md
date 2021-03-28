@@ -7,6 +7,7 @@
 - Spring Data JPA [<i>Starter</i>].
 - Spring Security [<i>Starter</i>] with JWT.
 - Spring Cloud Function [<i>Starter</i>].
+- Spring Boot Actuator.
 - Tomcat with SSL.
 - Exposing only REST endpoints.
 
@@ -86,6 +87,9 @@ Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: SAMEORIGIN
 Content-Length: 0
 Date: Sat, 27 Mar 2021 05:54:59 GMT
+
+# to allow chrome access localhost selfsigned certificate
+# chrome://flags/#allow-insecure-localhost
 
 ```
 

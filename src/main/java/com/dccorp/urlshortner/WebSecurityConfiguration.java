@@ -37,7 +37,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/configuration/security",
             "/swagger-ui.html",
             "/webjars/**",
-            "/go/**"
+            "/go/**",
+            "/actuator/**" // dont do this in PROD
     };
 
     public WebSecurityConfiguration(UserDetailsServiceImpl userDetailsService) {

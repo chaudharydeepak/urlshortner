@@ -21,4 +21,4 @@ jobs:
           java-version: 11
           graalvm-version: 20.2.0
           native-image: true
-      - run: mvn clean compile
+      - run: java -version

@@ -21,4 +21,6 @@ jobs:
           java-version: 11
           graalvm-version: 20.2.0
           native-image: true
-      - run: mvn clean install   
+      - run: mvn clean -Pnative-image package
+      
+      # todo publish native package as release.

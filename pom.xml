@@ -29,8 +29,10 @@
                             <!-- The native image build needs to know the entry point to your application -->
                             <mainClass>com.dccorp.urlshortner.UrlShortnerApplication</mainClass>
                             <buildArgs>
-                                -H:DashboardDump=dumpfileoversizedbuildArgs
-                                -H:+DashboardAll
+                                <!-- uncomment to generate dump file for graalvm dashboard analysis.-->
+                                <!--                                -H:DashboardDump=dumpfileoversizedbuildArgs-->
+                                <!--                                -H:+DashboardAll-->
+                                <!-- you can provide additional params. -->
                                 <!--                                -H:ReflectionConfigurationFiles=classes/reflect-config.json-->
                                 <!--                                -H:DynamicProxyConfigurationFiles=classes/proxy-config.json-->
                                 --enable-https

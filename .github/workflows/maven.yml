@@ -3,26 +3,26 @@
 # end of the pipeline, prior to UAT & above deployments.
 # How easily an application running in JVM can be automigrated to an image - without requiring image specific tweeks.
 
-name: Java CI with Maven
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ayltai/setup-graalvm@v1
-        with:
-          java-version: 11
-          graalvm-version: 21.0.0
-          native-image: true
-      - run: mvn clean -Pnative-image package
+#name: Java CI with Maven
+#
+#on:
+#  push:
+#    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
+#
+#jobs:
+#  build:
+#
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: ayltai/setup-graalvm@v1
+#        with:
+#          java-version: 11
+#          graalvm-version: 21.0.0
+#          native-image: true
+#      - run: mvn clean -Pnative-image package
       
       # todo publish native package as release.
